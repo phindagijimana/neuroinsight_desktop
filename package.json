@@ -43,13 +43,6 @@
       "frontend/**/*",
       "package.json"
     ],
-    "extraResources": [
-      {
-        "from": "resources",
-        "to": "resources",
-        "filter": ["**/*"]
-      }
-    ],
     "win": {
       "target": [
         {
