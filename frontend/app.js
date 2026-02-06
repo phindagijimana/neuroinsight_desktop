@@ -161,15 +161,15 @@ async function updateBackendStatus() {
     const statusElement = document.getElementById('backend-status');
     
     if (status.running) {
-      statusElement.textContent = `✓ Running on port ${status.port}`;
+      statusElement.textContent = `[OK] Running on port ${status.port}`;
       statusElement.style.color = 'var(--success-color)';
     } else {
-      statusElement.textContent = '✗ Not running';
+      statusElement.textContent = '[!] Not running';
       statusElement.style.color = 'var(--error-color)';
     }
   } catch (error) {
     console.error('Failed to get backend status:', error);
-    document.getElementById('backend-status').textContent = '⚠ Error';
+    document.getElementById('backend-status').textContent = '[WARNING] Error';
   }
 }
 
@@ -189,16 +189,16 @@ async function checkDockerStatus() {
     const statusText = document.getElementById('docker-status-text');
     
     if (status.running) {
-      statusIcon.textContent = '✅';
-      if (statusText) statusText.textContent = `✓ Running (${status.version})`;
+      statusIcon.textContent = '[OK]';
+      if (statusText) statusText.textContent = `[OK] Running (${status.version})`;
       showToast('Docker is running', 'success');
     } else if (status.installed) {
-      statusIcon.textContent = '⚠️';
-      if (statusText) statusText.textContent = `⚠ Installed but not running`;
+      statusIcon.textContent = '[!]';
+      if (statusText) statusText.textContent = `[!] Installed but not running`;
       showToast('Docker is installed but not running. Please start Docker Desktop.', 'warning');
     } else {
-      statusIcon.textContent = '❌';
-      if (statusText) statusText.textContent = '✗ Not installed';
+      statusIcon.textContent = '[X]';
+      if (statusText) statusText.textContent = '[X] Not installed';
       showToast('Docker is not installed', 'error');
     }
     
@@ -238,11 +238,11 @@ function updateSystemChecks() {
   let checks = '';
   
   if (state.dockerStatus.running) {
-    checks += '<div class="status-item"><span class="status-icon">✅</span><span>Docker: Running</span></div>';
+    checks += '<div class="status-item"><span class="status-icon">[OK]</span><span>Docker: Running</span></div>';
   } else if (state.dockerStatus.installed) {
-    checks += '<div class="status-item"><span class="status-icon">⚠️</span><span>Docker: Not running (please start Docker Desktop)</span></div>';
+    checks += '<div class="status-item"><span class="status-icon">[!]</span><span>Docker: Not running (please start Docker Desktop)</span></div>';
   } else {
-    checks += '<div class="status-item"><span class="status-icon">❌</span><span>Docker: Not installed</span></div>';
+    checks += '<div class="status-item"><span class="status-icon">[X]</span><span>Docker: Not installed</span></div>';
   }
   
   checksContainer.innerHTML = checks;
@@ -292,7 +292,7 @@ async function pullFreeSurferImage() {
     
     if (result.success) {
       showToast('FreeSurfer image downloaded successfully', 'success');
-      document.getElementById('freesurfer-status').textContent = '✓ Downloaded';
+      document.getElementById('freesurfer-status').textContent = '[OK] Downloaded';
     } else {
       showToast('Failed to download FreeSurfer image', 'error');
     }

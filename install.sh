@@ -10,18 +10,18 @@ INSTALL_DIR="$HOME/.local/bin"
 DESKTOP_DIR="$HOME/.local/share/applications"
 ICON_DIR="$HOME/.local/share/icons/hicolor/512x512/apps"
 
-echo "🧠 NeuroInsight Desktop Installer"
-echo "=================================="
+echo "NeuroInsight Desktop Installer"
+echo "==============================="
 echo ""
 
 # Check if already downloaded
 if [ -f "$APPIMAGE_NAME" ]; then
-    echo "✓ AppImage found: $APPIMAGE_NAME"
+    echo "[OK] AppImage found: $APPIMAGE_NAME"
 else
     # Check if we have a specific file
     if [ -f "NeuroInsight-1.0.0.AppImage" ]; then
         APPIMAGE_NAME="NeuroInsight-1.0.0.AppImage"
-        echo "✓ AppImage found: $APPIMAGE_NAME"
+        echo "[OK] AppImage found: $APPIMAGE_NAME"
     else
         echo "AppImage not found. Please download it first:"
         echo "  wget $APPIMAGE_URL"
@@ -34,7 +34,7 @@ fi
 # Make executable (this is the automated chmod!)
 echo "Making executable..."
 chmod +x "$APPIMAGE_NAME"
-echo "✓ Made executable"
+echo "[OK] Made executable"
 
 # Option 1: Just run it
 echo ""
@@ -63,14 +63,14 @@ mkdir -p "$ICON_DIR"
 # Copy AppImage to local bin
 cp "$APPIMAGE_NAME" "$INSTALL_DIR/NeuroInsight.AppImage"
 chmod +x "$INSTALL_DIR/NeuroInsight.AppImage"
-echo "✓ Copied to $INSTALL_DIR"
+echo "[OK] Copied to $INSTALL_DIR"
 
 # Extract icon from AppImage
 "./$APPIMAGE_NAME" --appimage-extract-and-run --appimage-help &>/dev/null || true
 if [ -f "squashfs-root/neuroinsight-desktop.png" ]; then
     cp "squashfs-root/neuroinsight-desktop.png" "$ICON_DIR/neuroinsight.png"
     rm -rf squashfs-root
-    echo "✓ Extracted icon"
+    echo "[OK] Extracted icon"
 fi
 
 # Create desktop entry
@@ -87,7 +87,7 @@ StartupWMClass=NeuroInsight
 EOF
 
 chmod +x "$DESKTOP_DIR/neuroinsight.desktop"
-echo "✓ Created desktop entry"
+echo "[OK] Created desktop entry"
 
 # Update desktop database
 if command -v update-desktop-database &> /dev/null; then
@@ -95,12 +95,12 @@ if command -v update-desktop-database &> /dev/null; then
 fi
 
 echo ""
-echo "✅ Installation complete!"
+echo "Installation complete!"
 echo ""
 echo "NeuroInsight is now available:"
-echo "  • Application menu: Search for 'NeuroInsight'"
-echo "  • Command line: NeuroInsight.AppImage"
-echo "  • Installed to: $INSTALL_DIR"
+echo "  - Application menu: Search for 'NeuroInsight'"
+echo "  - Command line: NeuroInsight.AppImage"
+echo "  - Installed to: $INSTALL_DIR"
 echo ""
 echo "To uninstall:"
 echo "  rm $INSTALL_DIR/NeuroInsight.AppImage"
@@ -111,5 +111,5 @@ echo ""
 read -p "Launch NeuroInsight now? (y/n): " launch
 if [ "$launch" = "y" ] || [ "$launch" = "Y" ]; then
     "$INSTALL_DIR/NeuroInsight.AppImage" &
-    echo "✓ Launched!"
+    echo "[OK] Launched!"
 fi

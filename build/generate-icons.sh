@@ -3,11 +3,11 @@
 
 set -e
 
-echo "🎨 Generating NeuroInsight Desktop Icons..."
+echo "Generating NeuroInsight Desktop Icons..."
 
 # Check if required tools are installed
 if ! command -v rsvg-convert &> /dev/null && ! command -v inkscape &> /dev/null; then
-    echo "⚠️  Warning: Neither rsvg-convert nor inkscape found."
+    echo "[WARNING] Neither rsvg-convert nor inkscape found."
     echo "   Install one of them:"
     echo "   - Ubuntu/Debian: sudo apt install librsvg2-bin"
     echo "   - macOS: brew install librsvg"
@@ -43,7 +43,7 @@ done
 # Copy the 512x512 as the main icon.png
 cp icons/icon-512.png icon.png
 
-echo "✅ PNG icons generated!"
+echo "[OK] PNG icons generated!"
 
 # Generate Windows ICO (requires ImageMagick)
 if command -v convert &> /dev/null || command -v magick &> /dev/null; then
@@ -57,9 +57,9 @@ if command -v convert &> /dev/null || command -v magick &> /dev/null; then
         convert icons/icon-{16,32,48,64,128,256}.png icon.ico
     fi
     
-    echo "✅ Windows ICO generated!"
+    echo "[OK] Windows ICO generated!"
 else
-    echo "⚠️  ImageMagick not found. Skipping .ico generation."
+    echo "[WARNING] ImageMagick not found. Skipping .ico generation."
     echo "   Install: sudo apt install imagemagick"
     echo "   electron-builder can generate .ico automatically."
 fi
@@ -89,14 +89,14 @@ if [[ "$OSTYPE" == "darwin"* ]] && command -v iconutil &> /dev/null; then
     # Cleanup
     rm -rf NeuroInsight.iconset
     
-    echo "✅ macOS ICNS generated!"
+    echo "[OK] macOS ICNS generated!"
 else
-    echo "ℹ️  Skipping .icns generation (macOS only)."
+    echo "[INFO] Skipping .icns generation (macOS only)."
     echo "   electron-builder can generate .icns automatically."
 fi
 
 echo ""
-echo "✅ Icon generation complete!"
+echo "[OK] Icon generation complete!"
 echo ""
 echo "Generated files:"
 ls -lh icon.png icon.ico icon.icns 2>/dev/null || ls -lh icon.png 2>/dev/null || echo "  icon.svg (ready for electron-builder)"
