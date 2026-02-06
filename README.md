@@ -190,4 +190,4 @@ https://surfer.nmr.mgh.harvard.edu/registration.html
 
 ---
 
-University of Rochester. All rights reserved.
+© 2025 University of Rochester. All rights reserved.

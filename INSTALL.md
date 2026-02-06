@@ -269,3 +269,7 @@ sudo usermod -aG docker $USER
 
 For more help, see README.md or visit:
 https://github.com/phindagijimana/neuroinsight_desktop/issues
+
+---
+
+© 2025 University of Rochester. All rights reserved.
