@@ -1,4 +1,4 @@
-# NeuroInsight Desktop v1.0.0 - First Official Release 🎉
+# NeuroInsight Desktop v1.0.0
 
 **Release Date:** February 6, 2026
 
@@ -9,17 +9,17 @@ First official release of NeuroInsight Desktop - a cross-platform native applica
 ## What's New
 
 ### Desktop Application
-- 🖥️ **Native Applications**: One-click installers for Windows and Linux
-- 🎨 **Modern UI**: Intuitive interface for MRI analysis workflows
-- 🐳 **Docker Integration**: Seamless FreeSurfer processing via Docker containers
-- 📊 **Real-time Progress**: Live monitoring of processing jobs with detailed status
-- 💾 **Data Persistence**: Local storage with automatic MinIO backup
-- 🔔 **System Integration**: System tray support, desktop shortcuts, native notifications
+- **Native Applications**: One-click installers for Windows and Linux
+- **Modern UI**: Intuitive interface for MRI analysis workflows
+- **Docker Integration**: Seamless FreeSurfer processing via Docker containers
+- **Real-time Progress**: Live monitoring of processing jobs with detailed status
+- **Data Persistence**: Local storage with automatic MinIO backup
+- **System Integration**: System tray support, desktop shortcuts, native notifications
 
 ### Platform Support
-- ✅ **Windows 10/11**: Full support with WSL2/Docker Desktop
-- ✅ **Linux**: Universal AppImage + DEB packages for Ubuntu/Debian
-- ⏳ **macOS**: Planned for v2.0.0 (Docker deployment works now)
+- **Windows 10/11**: Full support with WSL2/Docker Desktop
+- **Linux**: Universal AppImage + DEB packages for Ubuntu/Debian
+- **macOS**: Planned for v2.0.0 (Docker deployment available now)
 
 ## Downloads
 
