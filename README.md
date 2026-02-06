@@ -42,13 +42,27 @@ Cross-platform Electron desktop application for automated MRI brain analysis usi
 4. Launch from Start Menu
 
 #### Linux
+
+**AppImage (Recommended - Works on any distro):**
 ```bash
-# AppImage (recommended)
+# Download
+wget https://github.com/phindagijimana/neuroinsight_desktop/releases/latest/download/NeuroInsight-1.0.0.AppImage
+
+# Make executable and run
 chmod +x NeuroInsight-1.0.0.AppImage
 ./NeuroInsight-1.0.0.AppImage
+```
 
-# Or Debian package
-sudo dpkg -i neuroinsight_1.0.0_amd64.deb
+**Debian Package (Ubuntu/Debian/Mint):**
+```bash
+# Download
+wget https://github.com/phindagijimana/neuroinsight_desktop/releases/latest/download/NeuroInsight-1.0.0.deb
+
+# Install
+sudo dpkg -i NeuroInsight-1.0.0.deb
+
+# Run
+neuroinsight
 ```
 
 #### macOS
