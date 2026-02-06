@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Square with Navy Blue -->
+  <rect width="512" height="512" rx="64" fill="#003d7a"/>
+  
+  <!-- Brain Icon (Top) -->
+  <g transform="translate(256, 140)">
+    <path d="M-40,0 Q-45,-15 -50,-20 Q-55,-30 -45,-40 Q-35,-50 -20,-45 Q-10,-40 0,-40 Q10,-40 20,-45 Q35,-50 45,-40 Q55,-30 50,-20 Q45,-15 40,0 Q45,15 40,30 Q35,40 20,40 Q10,45 0,50 Q-10,45 -20,40 Q-35,40 -40,30 Q-45,15 -40,0 Z" 
+          fill="white" 
+          opacity="0.9"/>
+    <circle cx="-15" cy="-5" r="3" fill="#003d7a"/>
+    <circle cx="15" cy="-5" r="3" fill="#003d7a"/>
+  </g>
+  
+  <!-- "NeuroInsight" Text -->
+  <text x="256" y="320" 
+        font-family="Arial, Helvetica, sans-serif" 
+        font-size="52" 
+        font-weight="bold" 
+        fill="white" 
+        text-anchor="middle">
+    Neuro
+  </text>
+  
+  <text x="256" y="380" 
+        font-family="Arial, Helvetica, sans-serif" 
+        font-size="52" 
+        font-weight="bold" 
+        fill="white" 
+        text-anchor="middle">
+    Insight
+  </text>
+</svg>

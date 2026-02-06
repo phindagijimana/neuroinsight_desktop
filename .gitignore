@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+out/
+
+# Electron
+*.log
+*.log.*
+electron-builder.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# User data (development)
+dev-data/
+test-data/
+
+# Certificates and keys
+*.pem
+*.key
+*.cert
+*.p12
+
+# License file (user must provide)
+license.txt

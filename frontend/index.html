@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+  <title>NeuroInsight</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1>🧠 NeuroInsight</h1>
+          <p class="subtitle">Automated MRI Brain Analysis</p>
+        </div>
+        <div class="header-actions">
+          <button id="docker-status-btn" class="btn btn-secondary">
+            <span id="docker-status-icon">⚙️</span>
+            Docker Status
+          </button>
+          <button id="settings-btn" class="btn btn-secondary">⚙️ Settings</button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="welcome-screen">
+          <div class="welcome-card">
+            <h2>Welcome to NeuroInsight Desktop</h2>
+            <p>Automated hippocampal segmentation and analysis using FreeSurfer.</p>
+            
+            <div class="system-status">
+              <h3>System Status</h3>
+              <div id="system-checks">
+                <div class="status-item">
+                  <span class="status-icon">⏳</span>
+                  <span>Checking system requirements...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-actions">
+              <button id="new-job-btn" class="btn btn-primary btn-large">
+                <span>➕</span> New Analysis
+              </button>
+              <button id="view-jobs-btn" class="btn btn-secondary btn-large">
+                <span>📋</span> View Jobs
+              </button>
+            </div>
+
+            <div class="info-box">
+              <h4>ℹ️ First-Time Setup</h4>
+              <p>On your first analysis, the FreeSurfer image (~7GB) will be downloaded automatically.</p>
+              <p>MRI processing typically takes 3-7 hours per scan.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jobs View -->
+        <div id="jobs-view" class="jobs-view" style="display: none;">
+          <div class="view-header">
+            <h2>Analysis Jobs</h2>
+            <button id="back-btn" class="btn btn-secondary">← Back</button>
+          </div>
+          
+          <div id="jobs-list" class="jobs-list">
+            <div class="loading">Loading jobs...</div>
+          </div>
+        </div>
+
+        <!-- New Job View -->
+        <div id="new-job-view" class="new-job-view" style="display: none;">
+          <div class="view-header">
+            <h2>New Analysis</h2>
+            <button id="cancel-btn" class="btn btn-secondary">← Cancel</button>
+          </div>
+
+          <div class="upload-card">
+            <div id="drop-zone" class="drop-zone">
+              <div class="drop-zone-content">
+                <span class="drop-zone-icon">📁</span>
+                <h3>Drop MRI file here</h3>
+                <p>or</p>
+                <button id="select-file-btn" class="btn btn-primary">Browse Files</button>
+                <p class="file-hint">Supported: .nii, .nii.gz, .dcm</p>
+              </div>
+            </div>
+
+            <div id="file-info" class="file-info" style="display: none;">
+              <h4>Selected File:</h4>
+              <p id="file-path"></p>
+              <button id="start-analysis-btn" class="btn btn-success btn-large">
+                Start Analysis
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings View -->
+        <div id="settings-view" class="settings-view" style="display: none;">
+          <div class="view-header">
+            <h2>Settings</h2>
+            <button id="close-settings-btn" class="btn btn-secondary">← Close</button>
+          </div>
+
+          <div class="settings-card">
+            <div class="setting-group">
+              <h3>Docker</h3>
+              <div class="setting-item">
+                <label>Docker Status:</label>
+                <span id="docker-status-text">Checking...</span>
+              </div>
+              <button id="check-docker-btn" class="btn btn-secondary">Refresh Status</button>
+              <button id="install-docker-btn" class="btn btn-primary">Download Docker Desktop</button>
+            </div>
+
+            <div class="setting-group">
+              <h3>FreeSurfer</h3>
+              <div class="setting-item">
+                <label>FreeSurfer Image:</label>
+                <span id="freesurfer-status">Checking...</span>
+              </div>
+              <button id="pull-freesurfer-btn" class="btn btn-primary">Download FreeSurfer</button>
+            </div>
+
+            <div class="setting-group">
+              <h3>Application</h3>
+              <div class="setting-item">
+                <label>Version:</label>
+                <span id="app-version">-</span>
+              </div>
+              <div class="setting-item">
+                <label>Platform:</label>
+                <span id="app-platform">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>NeuroInsight Desktop v1.0.0 | Backend: <span id="backend-status">Connecting...</span></p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
