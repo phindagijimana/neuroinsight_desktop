@@ -12,11 +12,19 @@ NAVY_BLUE = "#003d7a"
 WHITE = "#ffffff"
 
 def create_icon(size=512, output_path="icon.png"):
-    """Create a square icon with NeuroInsight branding"""
+    """Create a rounded square icon with NeuroInsight branding"""
     
-    # Create image with navy blue background
-    img = Image.new('RGB', (size, size), NAVY_BLUE)
+    # Create image with transparent background first
+    img = Image.new('RGBA', (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
+    
+    # Draw rounded rectangle background (navy blue)
+    corner_radius = size // 8  # Smooth rounded corners
+    draw.rounded_rectangle(
+        [(0, 0), (size, size)],
+        radius=corner_radius,
+        fill=NAVY_BLUE
+    )
     
     # Calculate sizes relative to image size
     corner_radius = size // 8
@@ -64,27 +72,52 @@ def create_icon(size=512, output_path="icon.png"):
     draw.arc([size // 2, brain_bbox[1], brain_bbox[2], brain_bbox[3]], 
              start=0, end=180, fill=NAVY_BLUE, width=size // 80)
     
-    # Draw "NeuroInsight" text
-    text_y_start = size // 2 + size // 20
+    # Draw "NeuroInsight" text (single line with good margins)
+    # Calculate text size that fits with margins
+    margin = size // 8  # 12.5% margin on each side
+    max_text_width = size - (2 * margin)
     
-    # "Neuro" text
-    text1 = "Neuro"
-    bbox1 = draw.textbbox((0, 0), text1, font=font)
-    text1_width = bbox1[2] - bbox1[0]
-    text1_x = (size - text1_width) // 2
-    draw.text((text1_x, text_y_start), text1, fill=WHITE, font=font)
+    # Try to load font that fits nicely
+    try:
+        font_large = None
+        # Try different font sizes to find one that fits
+        for font_size in range(size // 5, size // 20, -2):
+            for font_path in font_paths:
+                if os.path.exists(font_path):
+                    test_font = ImageFont.truetype(font_path, font_size)
+                    test_bbox = draw.textbbox((0, 0), "NeuroInsight", font=test_font)
+                    test_width = test_bbox[2] - test_bbox[0]
+                    
+                    if test_width <= max_text_width:
+                        font_large = test_font
+                        break
+            if font_large:
+                break
+        
+        if font_large is None:
+            font_large = font
+    except:
+        font_large = font
     
-    # "Insight" text
-    text2 = "Insight"
-    bbox2 = draw.textbbox((0, 0), text2, font=font)
-    text2_width = bbox2[2] - bbox2[0]
-    text2_height = bbox2[3] - bbox2[1]
-    text2_x = (size - text2_width) // 2
-    text2_y = text_y_start + text2_height + size // 40
-    draw.text((text2_x, text2_y), text2, fill=WHITE, font=font)
+    # "NeuroInsight" as single word
+    text = "NeuroInsight"
+    bbox = draw.textbbox((0, 0), text, font=font_large)
+    text_width = bbox[2] - bbox[0]
+    text_height = bbox[3] - bbox[1]
+    text_x = (size - text_width) // 2
+    text_y = size * 2 // 3  # Centered in lower half
+    draw.text((text_x, text_y), text, fill=WHITE, font=font_large)
     
-    # Save the image
-    img.save(output_path, 'PNG')
+    # Convert RGBA to RGB for formats that don't support transparency
+    if output_path.endswith('.png'):
+        # Keep RGBA for PNG
+        img.save(output_path, 'PNG')
+    else:
+        # Convert to RGB for other formats
+        rgb_img = Image.new('RGB', img.size, NAVY_BLUE)
+        rgb_img.paste(img, (0, 0), img)
+        rgb_img.save(output_path)
+    
     print(f"✅ Created {output_path} ({size}x{size})")
     
     return img
