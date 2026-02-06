@@ -23,6 +23,22 @@ Cross-platform desktop application for automated MRI brain analysis using FreeSu
 - **Linux**: Any modern distribution (Ubuntu, Debian, Fedora, etc.)
 - **macOS**: macOS 10.13+ (High Sierra or later)
 
+## Download
+
+### Direct Downloads - v1.0.0
+
+**Linux:**
+- [NeuroInsight-1.0.0.AppImage](https://github.com/phindagijimana/neuroinsight_desktop/releases/download/v1.0.0/NeuroInsight-1.0.0.AppImage) (100 MB) - Universal, works on any distro
+- [NeuroInsight-1.0.0.deb](https://github.com/phindagijimana/neuroinsight_desktop/releases/download/v1.0.0/NeuroInsight-1.0.0.deb) (69 MB) - Ubuntu/Debian/Mint
+
+**Windows:**
+- [NeuroInsight-Setup-1.0.0.exe](https://github.com/phindagijimana/neuroinsight_desktop/releases/download/v1.0.0/NeuroInsight-Setup-1.0.0.exe) (73 MB) - Installer with shortcuts
+- [NeuroInsight-Portable-1.0.0.exe](https://github.com/phindagijimana/neuroinsight_desktop/releases/download/v1.0.0/NeuroInsight-Portable-1.0.0.exe) (73 MB) - Portable version
+
+**All Releases:** [GitHub Releases](https://github.com/phindagijimana/neuroinsight_desktop/releases)
+
+---
+
 ## Installation
 
 ### Linux
@@ -30,7 +46,7 @@ Cross-platform desktop application for automated MRI brain analysis using FreeSu
 **AppImage (Recommended - Works on any distro):**
 ```bash
 # Download
-wget https://github.com/phindagijimana/neuroinsight_desktop/releases/latest/download/NeuroInsight-1.0.0.AppImage
+wget https://github.com/phindagijimana/neuroinsight_desktop/releases/download/v1.0.0/NeuroInsight-1.0.0.AppImage
 
 # Make executable and run
 chmod +x NeuroInsight-1.0.0.AppImage
@@ -40,7 +56,7 @@ chmod +x NeuroInsight-1.0.0.AppImage
 **Debian Package (Ubuntu/Debian/Mint):**
 ```bash
 # Download
-wget https://github.com/phindagijimana/neuroinsight_desktop/releases/latest/download/NeuroInsight-1.0.0.deb
+wget https://github.com/phindagijimana/neuroinsight_desktop/releases/download/v1.0.0/NeuroInsight-1.0.0.deb
 
 # Install
 sudo dpkg -i NeuroInsight-1.0.0.deb
@@ -51,17 +67,14 @@ neuroinsight
 
 ### Windows
 
-1. Download `NeuroInsight-Setup-1.0.0.exe` from releases
+1. Download [NeuroInsight-Setup-1.0.0.exe](https://github.com/phindagijimana/neuroinsight_desktop/releases/download/v1.0.0/NeuroInsight-Setup-1.0.0.exe)
 2. Run the installer
 3. Follow installation wizard
 4. Launch from Start Menu or Desktop shortcut
 
 ### macOS
 
-1. Download `NeuroInsight-1.0.0.dmg` from releases
-2. Open the DMG file
-3. Drag NeuroInsight to Applications folder
-4. Launch from Applications
+**Note:** macOS support is planned for v2.0.0. For now, use the [Docker deployment](https://github.com/phindagijimana/neuroinsight_local).
 
 ## Quick Start
 
