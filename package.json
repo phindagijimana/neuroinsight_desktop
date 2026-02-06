@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "NeuroInsight - Automated MRI Brain Analysis Desktop Application",
   "main": "src/main/main.js",
-  "author": "NeuroInsight Team",
+  "author": {
+    "name": "NeuroInsight Team",
+    "email": "contact@neuroinsight.dev"
+  },
   "license": "MIT",
   "scripts": {
     "start": "electron .",
@@ -30,6 +33,7 @@
     "appId": "com.neuroinsight.desktop",
     "productName": "NeuroInsight",
     "copyright": "Copyright © 2024 NeuroInsight",
+    "publish": null,
     "directories": {
       "output": "dist",
       "buildResources": "build"
